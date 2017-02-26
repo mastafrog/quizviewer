@@ -39,35 +39,40 @@ public class QuestionController implements Initializable, ManagedView {
      * Initializes the controller class.
      */
     
-    /*
+    
     @FXML
     private TextArea meinfeld;
     
     @FXML
-    private Button nextButton;
-    */
+    public Button nextButton;
     
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
+        meinfeld.setText("From controller\n");
+        nextButton.setOnAction((event) -> {
+            // Button was clicked, do something...
+            meinfeld.appendText("Button Action\n");
+        });
     }
-  
-    /*private void setShit(){
+  /*
+    private void setShit(){
       meinfeld.setText( "test from controller");
     }*/
     
     
-   /* 
+    /*
     private void nextQuest(){
         meinfeld.setText( "test from controller"); 
         nextButton.setOnAction(this::handleButtonAction);
         System.out.println("sfsfsf");
     }
+    */
     
     private void handleButtonAction(ActionEvent event) {
         System.out.println("Button Action\n");
     }
-    */
     
+   
     public void setViewParent(ViewController screenParent){
         myController = screenParent;
     }
