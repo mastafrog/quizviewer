@@ -19,6 +19,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Slider;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -29,8 +30,7 @@ import javafx.stage.Stage;
 public class SettingsController implements Initializable, ManagedView {
     
     private Parent parent;
-    private int Fragenanzahl = 30;
-    private ArrayList allFragen; //TODO 
+    private int Fragenanzahl = 3;
     
     ViewController myController;
 
@@ -39,11 +39,12 @@ public class SettingsController implements Initializable, ManagedView {
      */
     
     
-    
     @FXML 
     private Slider sliderFragenanzahl;
     
     
+    @FXML
+    private Text textFragenanzahl;
     
     
     /*public ReadOnlyObjectProperty<reference> currentFragenanzahl() {
@@ -53,13 +54,14 @@ public class SettingsController implements Initializable, ManagedView {
     
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
+        textFragenanzahl.setText( String.valueOf(Fragenanzahl) );
+
         /* Listener für veränderungen der Werte des "Fragen Anzahl" Sliders */
         sliderFragenanzahl.valueProperty().addListener((observable, oldValue, newValue) -> {
             Fragenanzahl = newValue.intValue();
+            textFragenanzahl.setText( String.valueOf(Fragenanzahl) );
             System.out.println("Slider Value Changed (newValue: " + newValue.intValue() + ")");
         });
-        
-       ArrayList<Frage> testeFragen = createFragenList();
     }
     
     
@@ -67,6 +69,7 @@ public class SettingsController implements Initializable, ManagedView {
     
     @FXML
     private void StartLernquiz(ActionEvent event) throws Exception {
+        
         System.out.println("Starte Lernquiz");
        // try {
             /* Dieser Teil hat mir eine Ewigkeit gekostet
@@ -92,22 +95,14 @@ public class SettingsController implements Initializable, ManagedView {
             appStage.setScene(homeScene);
             appStage.show();  
         }*/
-        
-        myController.setView(App.screen2ID);
+      //  System.out.println(App.screen2ID);
+      //  myController.InitQuiz(Fragenanzahl);
+      myController.setView(App.screen2ID);
     }
     
     public void setViewParent(ViewController screenParent){
         myController = screenParent;
     }
     
-    
-    
-    private ArrayList<Frage> createFragenList() {
-        ArrayList<Frage> Quizlist = new<Frage> ArrayList();
-        for (int i = 0; i < Fragenanzahl; i++) {
-            ArrayList Antworten = new ArrayList(Arrays.asList("abc", "efg", "blup"));
-            Quizlist.add(new Frage("Trulala"+i, Antworten));
-        }
-        return Quizlist;
-    }
+
 }

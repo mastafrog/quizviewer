@@ -5,6 +5,8 @@
  */
 package quizviewer;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -29,6 +31,13 @@ import javafx.beans.property.DoubleProperty;
 public class ViewController extends StackPane {
     
     private HashMap<String, Node> views = new HashMap<>();
+    
+    /** QuizController variablen*/
+    private boolean quizFinished = false;
+    private int Fragenanzahl = 30;
+
+    /*Loader Variablen */
+    private ArrayList<Frage> AlleFragen; 
     
     public ViewController() {
         super();
@@ -63,10 +72,14 @@ public class ViewController extends StackPane {
         }
     }
     
-    //This method tries to displayed the screen with a predefined name.
-    //First it makes sure the screen has been already loaded.  Then if there is more than
-    //one screen the new screen is been added second, and then the current screen is removed.
-    // If there isn't any screen being displayed, the new screen is just added to the root.
+    
+    /* 
+    * This method tries to displayed the screen with a predefined name.
+    * First it makes sure the screen has been already loaded.  Then if there is more than
+    * one screen the new screen is been added second, and then the current screen is removed.
+    * If there isn't any screen being displayed, the new screen is just added to the root.
+    * @param final String name
+    */
     public boolean setView(final String name) {       
         /*if (views.get(name) != null) {   //screen loaded
         
@@ -130,5 +143,43 @@ public class ViewController extends StackPane {
             return true;
         }
     }
-     
+        
+        
+        
+    /*** 
+     * FUNCTIONS FOR QUIZ CONTROLLER
+     * 
+     * *@param int res;
+     */
+    
+    public void InitQuiz(int _FragenAnzahl){
+        this.Fragenanzahl = _FragenAnzahl;
+        System.out.println(views.toString());
+        this.setView(App.screen2ID);
+    }
+    
+    public void nextQuestion(int res) {
+        if(quizFinished != true){
+            
+        }
+    }
+    
+    
+    
+    /*** LOADER FUNCTIONS */
+   
+    private void LoadFragen() {
+       AlleFragen = createFragenList();
+    }
+        
+    
+    private ArrayList<Frage> createFragenList() {
+        ArrayList<Frage> Quizlist = new<Frage> ArrayList();
+        for (int i = 0; i < Fragenanzahl; i++) {
+            ArrayList Antworten = new ArrayList(Arrays.asList("abc", "efg", "blup"));
+            Quizlist.add(new Frage("Trulala"+i, Antworten));
+        }
+        return Quizlist;
+    }
+
 }

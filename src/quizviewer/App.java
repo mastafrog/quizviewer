@@ -18,13 +18,12 @@ import javafx.stage.Stage;
  */
 public class App extends Application {
     
-    private boolean quizFinished = false;
-    
     public static String screen1ID = "main";
     public static String screen1File = "Settings.fxml";
-    
+
+        
     public static String screen2ID = "next";
-    public static String screen2File = "TestFXML.fxml";
+    public static String screen2File = "Question.fxml";
     
     
     @Override
@@ -34,7 +33,9 @@ public class App extends Application {
         
         mainContainer.loadScreen(this.screen1ID, this.screen1File);
         mainContainer.loadScreen(this.screen2ID, this.screen2File);
-
+      
+        System.out.println(mainContainer.getView(this.screen1ID));;
+        
         mainContainer.setView(this.screen1ID);
 
         Group root = new Group();
