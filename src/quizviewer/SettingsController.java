@@ -97,6 +97,7 @@ public class SettingsController implements Initializable, ManagedView {
         }*/
       //  System.out.println(App.screen2ID);
       //  myController.InitQuiz(Fragenanzahl);
+      
       myController.setView(App.screen2ID);
     }
     

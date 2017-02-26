@@ -48,6 +48,9 @@ public class QuestionController implements Initializable, ManagedView {
     
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
+        
+        System.out.println(myController);
+        
         meinfeld.setText("From controller\n");
         nextButton.setOnAction((event) -> {
             // Button was clicked, do something...
