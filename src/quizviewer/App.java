@@ -18,6 +18,8 @@ import javafx.stage.Stage;
  */
 public class App extends Application {
     
+    private boolean quizFinished = false;
+    
     public static String screen1ID = "main";
     public static String screen1File = "Settings.fxml";
     

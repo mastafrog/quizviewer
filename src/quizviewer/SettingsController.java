@@ -62,6 +62,9 @@ public class SettingsController implements Initializable, ManagedView {
        ArrayList<Frage> testeFragen = createFragenList();
     }
     
+    
+    
+    
     @FXML
     private void StartLernquiz(ActionEvent event) throws Exception {
         System.out.println("Starte Lernquiz");
@@ -89,6 +92,8 @@ public class SettingsController implements Initializable, ManagedView {
             appStage.setScene(homeScene);
             appStage.show();  
         }*/
+        
+        myController.setView(App.screen2ID);
     }
     
     public void setViewParent(ViewController screenParent){

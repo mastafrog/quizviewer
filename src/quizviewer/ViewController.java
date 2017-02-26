@@ -68,7 +68,7 @@ public class ViewController extends StackPane {
     //one screen the new screen is been added second, and then the current screen is removed.
     // If there isn't any screen being displayed, the new screen is just added to the root.
     public boolean setView(final String name) {       
-        if (views.get(name) != null) {   //screen loaded
+        /*if (views.get(name) != null) {   //screen loaded
         
             final DoubleProperty opacity = opacityProperty();
 
@@ -100,26 +100,25 @@ public class ViewController extends StackPane {
         } else {
             System.out.println("View wurde nicht geladen!!! \n");
             return false;
-        }
-        
-        
-        
-/*  Das ganze ohne Animation? */
+        }*/
+        /*  Das ganze ohne Animation? */
 
-        /*Node screenToRemove;
-         if(screens.get(name) != null){   //screen loaded
-         if(!getChildren().isEmpty()){    //if there is more than one screen
-         getChildren().add(0, screens.get(name));     //add the screen
-         screenToRemove = getChildren().get(1);
-         getChildren().remove(1);                    //remove the displayed screen
-         }else{
-         getChildren().add(screens.get(name));       //no one else been displayed, then just show
-         }
-         return true;
-         }else {
-         System.out.println("screen hasn't been loaded!!! \n");
-         return false;
-         }*/
+        /*Node screenToRemove;*/
+        
+        if(views.get(name) != null){   //screen loaded
+            if(!getChildren().isEmpty()){    //if there is more than one screen
+
+            getChildren().remove(0);                     //remove the displayed screen
+            getChildren().add(0, views.get(name));       //add the screen
+
+            } else {
+                getChildren().add(views.get(name));       //no one else been displayed, then just show
+           }
+           return true;
+        } else {
+            System.out.println("screen hasn't been loaded!!! \n");
+            return false;
+        }
     }
     
     
