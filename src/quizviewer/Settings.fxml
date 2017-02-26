@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quizviewer.SettingsController"> <!--fx:controller="lernquiz.controllers.SettingsController"-->
+    <stylesheets>
+        <URL value="@../styles/Settings.css"/>                                                                                       
+    </stylesheets>
+    <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Willkommen bei Lernquiz">
+         <font>
+            <Font size="30.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="30.0" />
+         </VBox.margin>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wie fiele Fragen würde Sie gern beantworten? (30 bis 60 Fragen)" textAlignment="CENTER" wrappingWidth="250.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="8.0" />
+         </VBox.margin>
+      </Text>
+      <HBox alignment="CENTER" prefHeight="60.0" prefWidth="600.0">
+         <children>
+            <Slider fx:id="sliderFragenanzahl" blockIncrement="1.0" max="60.0" min="30.0" prefHeight="30.0" prefWidth="140.0" /> <!-- showTickMarks="true" -->
+            <Text fx:id="textFragenanzahl" strokeType="OUTSIDE" strokeWidth="0.0" text="59" textAlignment="CENTER" wrappingWidth="42">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" />
+               </HBox.margin>
+            </Text>
+         </children>
+      </HBox>
+      <Button fx:id="buttonStart" mnemonicParsing="false" onAction="#StartLernquiz" prefHeight="35.0" prefWidth="160.0" text="Den Lernquiz beginnen">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </Button>
+   </children>
+</VBox>
+</AnchorPane>

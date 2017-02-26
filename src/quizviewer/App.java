@@ -7,6 +7,7 @@ package quizviewer;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -17,12 +18,26 @@ import javafx.stage.Stage;
  */
 public class App extends Application {
     
+    public static String screen1ID = "main";
+    public static String screen1File = "Settings.fxml";
+    
+    public static String screen2ID = "next";
+    public static String screen2File = "TestFXML.fxml";
+    
+    
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("mainview.fxml"));
         
+        ViewController mainContainer = new ViewController();
+        
+        mainContainer.loadScreen(this.screen1ID, this.screen1File);
+        mainContainer.loadScreen(this.screen2ID, this.screen2File);
+
+        mainContainer.setView(this.screen1ID);
+
+        Group root = new Group();
+        root.getChildren().addAll(mainContainer);
         Scene scene = new Scene(root);
-        
         stage.setScene(scene);
         stage.show();
     }
