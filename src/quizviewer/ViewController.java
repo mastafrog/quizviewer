@@ -7,21 +7,12 @@ package quizviewer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
-import javafx.beans.property.DoubleProperty;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
-import javafx.util.Duration;
-
-
-import javafx.beans.property.DoubleProperty;
 
 
 /**
@@ -35,7 +26,8 @@ public class ViewController extends StackPane {
     /** QuizController variablen*/
     private boolean quizFinished = false;
     private int Fragenanzahl = 30;
-
+	ManagedView myScreenControler;
+	
     /*Loader Variablen */
     private ArrayList<Frage> AlleFragen; 
     
@@ -60,7 +52,7 @@ public class ViewController extends StackPane {
         try {
             FXMLLoader myLoader = new FXMLLoader(getClass().getResource(resource));
             Parent loadView = (Parent) myLoader.load();
-            ManagedView myScreenControler = ((ManagedView) myLoader.getController());
+            myScreenControler = ((ManagedView) myLoader.getController());
             myScreenControler.setViewParent(this);
             addView(name, loadView);
             return true;
@@ -118,7 +110,7 @@ public class ViewController extends StackPane {
 
         /*Node screenToRemove;*/
         
-        if(views.get(name) != null){   //screen loaded
+        if(views.get(name) != null) {   //screen loaded
             if(!getChildren().isEmpty()){    //if there is more than one screen
 
             getChildren().remove(0);                     //remove the displayed screen
@@ -140,12 +132,12 @@ public class ViewController extends StackPane {
             System.out.println("View existiert nicht!");
             return false;
         } else {
-            return true;
-        }
-    }
-        
-        
-        
+			return true;
+		}
+	}
+	
+	
+	
     /*** 
      * FUNCTIONS FOR QUIZ CONTROLLER
      * 
@@ -154,22 +146,30 @@ public class ViewController extends StackPane {
     
     public void InitQuiz(int _FragenAnzahl){
         this.Fragenanzahl = _FragenAnzahl;
-        System.out.println(views.toString());
+		//.out.println(views.toString());
         this.setView(App.screen2ID);
+		System.out.println("InitQuest\n");
+		
+
+		LoadFragen();
     }
     
-    public void nextQuestion(int res) {
-        if(quizFinished != true){
-            
+
+    
+    public void nextQuest() {
+		if(quizFinished != true){
+            Frage frage = AlleFragen.get(AlleFragen.size());
+			myScreenControler.nextQuest(frage);
         }
-    }
+		
+		System.out.println("main from controller");
+	}
     
-    
-    
+	
     /*** LOADER FUNCTIONS */
-   
     private void LoadFragen() {
        AlleFragen = createFragenList();
+	   Collections.shuffle(AlleFragen);
     }
         
     
@@ -178,7 +178,7 @@ public class ViewController extends StackPane {
         for (int i = 0; i < Fragenanzahl; i++) {
             ArrayList Antworten = new ArrayList(Arrays.asList("abc", "efg", "blup"));
             Quizlist.add(new Frage("Trulala"+i, Antworten));
-        }
+        } 
         return Quizlist;
     }
 

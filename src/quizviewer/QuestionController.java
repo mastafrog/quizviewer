@@ -8,13 +8,10 @@ package quizviewer;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -55,6 +52,7 @@ public class QuestionController implements Initializable, ManagedView {
         nextButton.setOnAction((event) -> {
             // Button was clicked, do something...
             meinfeld.appendText("Button Action\n");
+			nextQuest();
         });
     }
   /*
@@ -63,19 +61,13 @@ public class QuestionController implements Initializable, ManagedView {
     }*/
     
     
-    /*
-    private void nextQuest(){
-        meinfeld.setText( "test from controller"); 
-        nextButton.setOnAction(this::handleButtonAction);
-        System.out.println("sfsfsf");
-    }
-    */
     
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("Button Action\n");
+    private void nextQuest(Frage q){
+        meinfeld.appendText( "test from controller");
+		myController.nextQuest();
     }
     
-   
+
     public void setViewParent(ViewController screenParent){
         myController = screenParent;
     }

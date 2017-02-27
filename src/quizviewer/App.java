@@ -33,9 +33,7 @@ public class App extends Application {
         
         mainContainer.loadScreen(this.screen1ID, this.screen1File);
         mainContainer.loadScreen(this.screen2ID, this.screen2File);
-      
-        System.out.println(mainContainer.getView(this.screen1ID));;
-        
+             
         mainContainer.setView(this.screen1ID);
 
         Group root = new Group();

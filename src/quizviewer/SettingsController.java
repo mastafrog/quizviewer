@@ -70,7 +70,6 @@ public class SettingsController implements Initializable, ManagedView {
     @FXML
     private void StartLernquiz(ActionEvent event) throws Exception {
         
-        System.out.println("Starte Lernquiz");
        // try {
             /* Dieser Teil hat mir eine Ewigkeit gekostet
              https://stackoverflow.com/questions/573679/open-resource-with-relative-path-in-java           
@@ -97,8 +96,8 @@ public class SettingsController implements Initializable, ManagedView {
         }*/
       //  System.out.println(App.screen2ID);
       //  myController.InitQuiz(Fragenanzahl);
-      
-      myController.setView(App.screen2ID);
+      myController.InitQuiz(Fragenanzahl);
+    // ---> myController.setView(App.screen2ID);
     }
     
     public void setViewParent(ViewController screenParent){
