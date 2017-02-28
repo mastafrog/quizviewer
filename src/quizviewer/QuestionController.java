@@ -57,16 +57,8 @@ public class QuestionController implements Initializable, ManagedView {
 	//nextQuest();
         });
     }  
-    
-    public void testFunc(String str) {
-        System.out.println("testFunc" + str);
-    }
-    
-    
-    private void nextQuest(Frage q){
-        //meinfeld.appendText( "test from controller");
-    }
-    
+
+
 
     public void setViewParent(ViewController screenParent){
         myController = screenParent;
