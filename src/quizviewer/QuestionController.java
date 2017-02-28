@@ -50,21 +50,21 @@ public class QuestionController implements Initializable, ManagedView {
         
         meinfeld.setText("From controller\n");
         nextButton.setOnAction((event) -> {
-            // Button was clicked, do something...
+            
+            System.out.println(myController);
+
             meinfeld.appendText("Button Action\n");
-			nextQuest();
+	//nextQuest();
         });
-    }
-  /*
-    private void setShit(){
-      meinfeld.setText( "test from controller");
-    }*/
+    }  
     
+    public void testFunc(String str) {
+        System.out.println("testFunc" + str);
+    }
     
     
     private void nextQuest(Frage q){
-        meinfeld.appendText( "test from controller");
-		myController.nextQuest();
+        //meinfeld.appendText( "test from controller");
     }
     
 
@@ -73,3 +73,72 @@ public class QuestionController implements Initializable, ManagedView {
     }
 
 }
+
+
+
+
+
+/*
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        
+        ListView<String> answerList = new ListView<>(Answers);
+        answerList.setEditable(true);
+        
+    //    stage.getIcons().add(new Image("resources/icon.png")getClass().getResource("resources/icon.png"));
+        System.out.println(stage.getIcons().toString());
+        
+    //    answerList.addAll(Answers);
+        answerList.setCellFactory(
+        new Callback<ListView<String>, ListCell<String>>() {
+            @Override public ListCell<String> call(ListView<String> param) {
+                final ListCell<String> cell;
+                cell = new ListCell<String>() {
+                    
+                    VBox vb;
+                    Label content;
+                    Button button;
+                        
+                    {
+                        super.setPrefWidth(100);
+                        
+                        vb = new VBox();
+                        content = new Label("fk");
+                        button = new Button("AFL");
+                        vb.getChildren().addAll(content, button);
+                        setGraphic(vb);      
+                    }
+                    
+                    @Override public void updateItem(String item,
+                        boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null) {
+                            setText(item);
+                            if (item.contains("A")) {
+                                setTextFill(Color.RED);
+                            }
+                            else if (item.contains("B")){
+                                setTextFill(Color.GREEN);
+                            }
+                            else {
+                                setTextFill(Color.BLACK);
+                            }
+                        }
+                        else {
+                            setText(null);
+                        }
+                    }
+                };
+            return cell;
+        }
+                    
+    });
+
+    VBox layout = new VBox(answerList);
+    Scene scene = new Scene(layout);
+    stage.setScene(scene);
+    stage.show();
+    }
+*/

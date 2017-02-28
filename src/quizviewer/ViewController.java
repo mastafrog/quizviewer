@@ -26,7 +26,8 @@ public class ViewController extends StackPane {
     /** QuizController variablen*/
     private boolean quizFinished = false;
     private int Fragenanzahl = 30;
-	ManagedView myScreenControler;
+
+    ManagedView myScreenControler;
 	
     /*Loader Variablen */
     private ArrayList<Frage> AlleFragen; 
@@ -132,8 +133,8 @@ public class ViewController extends StackPane {
             System.out.println("View existiert nicht!");
             return false;
         } else {
-			return true;
-		}
+		return true;
+            }
 	}
 	
 	
@@ -144,32 +145,44 @@ public class ViewController extends StackPane {
      * *@param int res;
      */
     
-    public void InitQuiz(int _FragenAnzahl){
-        this.Fragenanzahl = _FragenAnzahl;
+    public void InitQuiz(int _FragenAnzahl) {
+        System.out.println("VIEW CONTROLLER InitQuiz");
+        Fragenanzahl = _FragenAnzahl;
 		//.out.println(views.toString());
-        this.setView(App.screen2ID);
-		System.out.println("InitQuest\n");
-		
+        setView(App.screen2ID);
 
-		LoadFragen();
+        if(LoadFragen()){
+            System.out.println(AlleFragen.size());
+            Frage frage = AlleFragen.get(AlleFragen.size()-1);
+        
+            System.out.println("InitQuest - frage\n" + frage.getFrage());
+          //  ArrayList<String> antworten = frage.getAntworten();  
+          
+            for(String antwort : frage.getAntworten() ){
+                System.out.println("Antwort:" + antwort);
+            }
+        }
+
     }
     
 
     
     public void nextQuest() {
-		if(quizFinished != true){
+	if(quizFinished != true){
             Frage frage = AlleFragen.get(AlleFragen.size());
-			myScreenControler.nextQuest(frage);
+        //    myScreenControler.nextQuest(frage);
         }
-		
-		System.out.println("main from controller");
+	System.out.println("main from controller");
+        
 	}
     
 	
     /*** LOADER FUNCTIONS */
-    private void LoadFragen() {
+    private boolean LoadFragen() {
+       System.out.println("LOAD FRAGEN \n");
        AlleFragen = createFragenList();
-	   Collections.shuffle(AlleFragen);
+       Collections.shuffle(AlleFragen);
+       return true;
     }
         
     

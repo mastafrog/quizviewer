@@ -21,9 +21,9 @@ public class App extends Application {
     public static String screen1ID = "main";
     public static String screen1File = "Settings.fxml";
 
-        
     public static String screen2ID = "next";
     public static String screen2File = "Question.fxml";
+    
     
     
     @Override
@@ -35,7 +35,8 @@ public class App extends Application {
         mainContainer.loadScreen(this.screen2ID, this.screen2File);
              
         mainContainer.setView(this.screen1ID);
-
+    //    mainContainer.InitQuiz(10);
+        
         Group root = new Group();
         root.getChildren().addAll(mainContainer);
         Scene scene = new Scene(root);
